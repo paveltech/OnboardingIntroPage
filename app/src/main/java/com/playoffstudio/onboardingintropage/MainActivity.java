@@ -1,62 +1,40 @@
 package com.playoffstudio.onboardingintropage;
 
-import android.graphics.Typeface;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 
-import com.codemybrainsout.onboarder.AhoyOnboarderActivity;
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
+public class MainActivity extends AppCompatActivity {
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MainActivity  extends AhoyOnboarderActivity {
-
+    Button button1 , button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        button1 = (Button) findViewById(R.id.button);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this , OnboardingActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("City Guide", "Detailed guides to help you plan your trip.", R.mipmap.ic_launcher);
-        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("Travel Blog", "Share your travel experiences with a vast network of fellow travellers.", R.mipmap.ic_launcher);
-        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("Chat", "Connect with like minded people and exchange your travel stories.", R.mipmap.ic_launcher);
 
-        ahoyOnboarderCard1.setBackgroundColor(R.color.black_transparent);
-        ahoyOnboarderCard2.setBackgroundColor(R.color.black_transparent);
-        ahoyOnboarderCard3.setBackgroundColor(R.color.black_transparent);
-
-        List<AhoyOnboarderCard> pages = new ArrayList<>();
-
-        pages.add(ahoyOnboarderCard1);
-        pages.add(ahoyOnboarderCard2);
-        pages.add(ahoyOnboarderCard3);
-
-        for (AhoyOnboarderCard page : pages) {
-            page.setTitleColor(R.color.white);
-            page.setDescriptionColor(R.color.grey_200);
-            //page.setTitleTextSize(dpToPixels(12, this));
-            //page.setDescriptionTextSize(dpToPixels(8, this));
-            //page.setIconLayoutParams(width, height, marginTop, marginLeft, marginRight, marginBottom);
-        }
-
-        setFinishButtonTitle("Finish");
-        showNavigationControls(true);
-        setGradientBackground();
-
-        //set the button style you created
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setFinishButtonDrawableStyle(ContextCompat.getDrawable(this, R.drawable.rounded_button));
-        }
-
-        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");
-        setFont(face);
-
-        setOnboardPages(pages);
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this , PaperOnboardingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    public void onFinishButtonPressed() {
-
-    }
 }

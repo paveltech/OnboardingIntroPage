@@ -13,8 +13,23 @@
     tools:context="com.playoffstudio.onboardingintropage.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+
+    <Button
+        android:text="OnBoarding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/button" />
+
+    <Button
+        android:text="OnBarding Animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:id="@+id/button2"
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 </RelativeLayout>
